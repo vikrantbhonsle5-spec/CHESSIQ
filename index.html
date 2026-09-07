@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>ChessIQ — Train Your Mind. Master Every Move.</title>
+<style>
+:root{--bg:#050a12;--panel:#0b1422;--panel2:#101d2e;--line:#20344d;--txt:#f5f8fc;--muted:#91a4b9;--gold:#ffc94d;--cyan:#49d7ff;--violet:#a77bff;--green:#54f2a1;--red:#ff6878;--blue:#5da7ff;--light:#e9edf0;--dark:#49627d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#17345a 0,#08111e 34%,#03060b 100%);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}button{font:inherit}.hidden{display:none!important}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:linear-gradient(rgba(73,215,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(73,215,255,.035) 1px,transparent 1px);background-size:45px 45px;mask-image:linear-gradient(#000,transparent 85%);z-index:-1}
+header{position:sticky;top:0;z-index:30;background:rgba(3,8,15,.84);backdrop-filter:blur(18px);border-bottom:1px solid #14253a}.nav{max-width:1240px;margin:auto;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{display:flex;align-items:center;gap:11px;font-weight:950;letter-spacing:.08em}.brandMark{width:44px;height:44px;border:1px solid #3d7190;border-radius:13px;display:grid;place-items:center;font-size:28px;background:linear-gradient(145deg,#142a41,#08111e);box-shadow:0 0 30px rgba(73,215,255,.12)}.brand small{display:block;color:#71859b;font-size:8px;letter-spacing:.2em;margin-top:2px}.brandName{font-size:18px}.brandName i{font-style:normal;color:var(--gold)}.navRight{display:flex;gap:8px;align-items:center}.pill{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:11px}.share{border:1px solid #3e9b7c;background:#0d2a25;color:#bfffe5;padding:10px 13px;border-radius:11px;font-weight:850;cursor:pointer}
+.wrap{max-width:1240px;margin:auto;padding:30px 18px 65px}.hero{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;padding:42px 0}.eyebrow{font-size:10px;letter-spacing:.25em;color:var(--cyan);font-weight:900}h1{font-size:clamp(44px,6.2vw,78px);line-height:.94;letter-spacing:-.055em;margin:13px 0 20px}.grad{background:linear-gradient(90deg,#fff,var(--gold),#fff);color:transparent;-webkit-background-clip:text;background-clip:text}.lead{font-size:16px;line-height:1.7;color:#a7b8c9;max-width:650px}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}.btn{border:1px solid var(--line);background:#0b1523;color:#fff;padding:12px 17px;border-radius:12px;font-weight:900;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#ffd96c,#f1a928);border-color:#ffe08c;color:#10100a;box-shadow:0 12px 35px rgba(255,201,77,.14)}
+.heroArt{min-height:420px;border:1px solid #1c3854;border-radius:25px;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 45%,#1e4264,#0b1726 48%,#040911 100%);display:grid;place-items:center;box-shadow:inset 0 0 100px rgba(73,215,255,.05),0 25px 80px rgba(0,0,0,.4)}.heroArt:after{content:"CHESS PERFORMANCE ARENA";position:absolute;right:17px;top:14px;color:#59738c;font-size:8px;letter-spacing:.2em}.ring{position:absolute;width:310px;height:310px;border:1px solid rgba(73,215,255,.3);border-radius:50%;box-shadow:0 0 60px rgba(73,215,255,.08)}.ring.r2{width:230px;height:230px;border-color:rgba(255,201,77,.3)}.heroPieces{display:flex;align-items:flex-end;gap:6px;position:relative;z-index:2;text-shadow:0 10px 25px #000}.heroPieces span{font-size:clamp(58px,10vw,105px);filter:drop-shadow(0 0 12px rgba(255,201,77,.16))}.heroPieces span:nth-child(2){font-size:clamp(80px,13vw,140px);color:#fff}.heroPieces span:nth-child(3){font-size:clamp(66px,11vw,115px)}.floating{position:absolute;color:#8eb1cb;font-size:54px;opacity:.22}.f1{left:8%;top:12%}.f2{right:8%;bottom:11%;font-size:70px}.f3{right:16%;top:17%;font-size:45px}
+.title{margin:30px 0 13px;display:flex;justify-content:space-between;align-items:end;gap:10px}.title h2{margin:0;font-size:25px}.title p{margin:0;color:var(--muted);font-size:12px}.about{display:grid;grid-template-columns:1.15fr 2fr;gap:13px}.panel{background:linear-gradient(145deg,rgba(13,25,40,.96),rgba(7,13,22,.96));border:1px solid var(--line);border-radius:18px;padding:19px}.aboutLead{font-size:14px;line-height:1.7;color:#aebdca}.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.benefit{border:1px solid #1a3047;border-radius:14px;padding:14px;background:#091321}.benefit .ico{font-size:27px}.benefit b{display:block;margin-top:8px}.benefit p{color:#8498ad;font-size:11px;line-height:1.45;margin:6px 0 0}
+.profile{display:grid;grid-template-columns:1fr 2fr;gap:13px}.rating{font-size:50px;font-weight:950;letter-spacing:-.05em;color:#fff}.sub{color:#7890a7;font-size:9px;letter-spacing:.18em;font-weight:900}.xp{height:7px;background:#152438;border-radius:99px;overflow:hidden;margin:13px 0}.xp i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--green));width:0}.skills{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.skill{border:1px solid #182d43;border-radius:13px;padding:12px;background:#08121f}.skill b{font-size:21px}.skill span{display:block;color:#7890a7;font-size:8px;letter-spacing:.12em;margin-top:4px}.skillBar{height:4px;background:#16263a;margin-top:8px;border-radius:99px;overflow:hidden}.skillBar i{display:block;height:100%;background:var(--cyan)}
+.games{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.card{min-height:245px;border:1px solid #1d3852;border-radius:18px;padding:16px;background:linear-gradient(160deg,#0e1d2e,#070d16);position:relative;overflow:hidden;cursor:pointer;transition:.18s}.card:hover{transform:translateY(-4px);border-color:#4b86ad;box-shadow:0 20px 55px rgba(0,0,0,.3)}.card:after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;right:-40px;top:-45px;background:rgba(73,215,255,.08)}.card .icon{font-size:34px}.card h3{font-size:17px;margin:13px 0 6px}.card p{font-size:11px;line-height:1.5;color:#8fa1b3}.card .benefitText{font-size:10px;color:#9fb2c3!important;line-height:1.42!important;border-top:1px solid #183049;padding-top:8px;margin-top:8px}.card .benefitText br{display:block}.card{min-height:300px}.card .tag{position:absolute;left:16px;bottom:16px;color:#55dca1;font-size:8px;letter-spacing:.16em;font-weight:900}.card .play{position:absolute;right:13px;bottom:11px;border:1px solid #31516e;border-radius:9px;padding:6px 8px;color:#dff6ff;font-size:10px;font-weight:900}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.step{border:1px solid var(--line);border-radius:15px;padding:15px;background:#091321}.step strong{color:var(--gold)}.step b{display:block;margin:7px 0 4px}.step span{font-size:11px;color:#8799aa;line-height:1.45}
+.shareStrip{margin-top:18px;padding:20px;border:1px solid #214838;border-radius:18px;background:linear-gradient(90deg,#0b211c,#09131f);display:flex;justify-content:space-between;align-items:center;gap:15px}.shareStrip b{font-size:17px}.shareStrip p{margin:5px 0 0;color:#82999a;font-size:11px}footer{text-align:center;padding:23px;color:#64798e;border-top:1px solid #122237;font-size:10px}
+
+/* arena */
+#arena{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 0,#17365a,#050a11 52%);overflow:auto}.arenaTop{position:sticky;top:0;z-index:4;background:rgba(3,8,14,.92);backdrop-filter:blur(16px);border-bottom:1px solid #19324c;padding:11px 15px;display:flex;align-items:center;justify-content:space-between;gap:8px}.back{background:#0b1624;border:1px solid #29415b;color:#eaf2f8;padding:9px 11px;border-radius:10px;cursor:pointer;font-weight:850}.mission{text-align:center}.mission small{display:block;color:var(--cyan);font-size:8px;letter-spacing:.2em;font-weight:900}.mission b{font-size:14px}.arenaScore{color:var(--gold);font-weight:950}.arenaBody{max-width:900px;margin:auto;padding:18px 15px 55px}.brief{text-align:center;border:1px solid #1d3852;background:rgba(8,17,28,.88);border-radius:17px;padding:15px;margin-bottom:13px}.brief b{font-size:15px}.brief p{margin:6px 0 0;color:#8fa2b4;font-size:11px}.status{text-align:center;color:#8196aa;font-size:11px;margin:8px}.status strong{color:#fff}.timer{height:7px;max-width:560px;margin:0 auto 13px;background:#17283b;border-radius:99px;overflow:hidden}.timer i{display:block;width:100%;height:100%;background:linear-gradient(90deg,var(--green),var(--gold));transform-origin:left}.arenaArea{min-height:420px;display:grid;place-items:center}.feedbackCard{width:min(92vw,720px);margin:10px auto;padding:26px;border:1px solid #31536f;border-radius:18px;background:linear-gradient(180deg,#102033,#0a1522);box-shadow:0 18px 50px rgba(0,0,0,.28);text-align:left}.feedbackLabel{font-size:11px;letter-spacing:1.8px;font-weight:950;color:#7e92a7}.feedbackAnswer{font-size:25px;font-weight:950;margin:8px 0 14px;color:#54f2a1}.feedbackAnswer.bad{color:#ff8b96}.feedbackWhy{font-size:15px;line-height:1.6;color:#d9e6ef}.feedbackNext{display:block;margin:20px auto 0;min-width:190px}.feedbackMini{font-size:12px;color:#8fa5b7;margin-top:12px}
+.choices{display:grid;grid-template-columns:repeat(2,minmax(140px,280px));gap:10px;justify-content:center;width:100%}.choice{border:1px solid #29445e;background:#0b1725;color:#edf5fa;border-radius:12px;padding:13px;cursor:pointer;font-weight:850}.choice:hover{border-color:#5bb9e2}.choice.correct{background:#153f30;border-color:#4de19c}.choice.wrong{background:#401d29;border-color:#ff6b78}.board{width:min(92vw,570px);aspect-ratio:1;display:grid;grid-template-columns:repeat(8,1fr);border:7px solid #17283b;border-radius:9px;overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.45)}.sq{position:relative;display:grid;place-items:center;font-size:clamp(26px,7vw,55px);cursor:pointer;user-select:none}.sq.light{background:#e0e7e2;color:#18231d}.sq.dark{background:#55705c;color:#fff}.sq.hot{outline:4px solid var(--gold);outline-offset:-4px}.sq.good{background:#70c994!important}.sq.bad{background:#e87582!important}.coord{position:absolute;bottom:2px;left:3px;font-size:7px;font-weight:900;opacity:.55}.sq.dark .coord{color:#fff}.sq.light .coord{color:#26352b}.seqGrid{display:grid;grid-template-columns:repeat(4,70px);gap:10px;justify-content:center}.seqTile{height:70px;border:1px solid #29445e;border-radius:13px;background:#0c1826;color:#fff;font-size:28px;font-weight:950;cursor:pointer}.seqTile.show{background:#224f70;border-color:#61c8f2;box-shadow:0 0 22px rgba(73,215,255,.2)}.seqTile.good{background:#164a35}.seqTile.wrong{background:#51202c}.reactionZone{width:min(90vw,600px);height:330px;border:1px solid #28435e;border-radius:20px;background:#091421;display:grid;place-items:center;cursor:pointer;position:relative;overflow:hidden}.reactionZone:before{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(73,215,255,.07),transparent 55%)}.reactionDot{width:105px;height:105px;border-radius:50%;display:grid;place-items:center;background:#2a4055;border:3px solid #7891a8;box-shadow:0 0 40px rgba(73,215,255,.08);font-weight:950;position:relative;z-index:2}.reactionDot.ready{background:#57ef9c;color:#03120b;border-color:#b4ffd4;box-shadow:0 0 50px rgba(84,242,161,.4)}.reactionDot.wait{background:#27313b}.flash{font-size:20px;font-weight:950;color:var(--gold);text-align:center}.scanTarget{width:55px;height:55px;border-radius:50%;background:radial-gradient(circle,#fff 0 10%,#4ee6a0 11% 45%,#113e31 46% 100%);box-shadow:0 0 35px rgba(84,242,161,.5);position:absolute;transform:translate(-50%,-50%);cursor:pointer}.scanZone{width:min(92vw,620px);height:min(70vw,410px);max-height:410px;border:1px solid #28435e;border-radius:20px;position:relative;overflow:hidden;background:radial-gradient(circle,#17283a,#07101a)}.scanZone:after{content:"";position:absolute;inset:0;opacity:.45;background-image:radial-gradient(circle,rgba(150,180,200,.18) 1px,transparent 1px);background-size:18px 18px}.scanHint{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:3;font-size:9px;letter-spacing:.15em;color:#8ea4b7}.result{position:fixed;inset:0;z-index:200;background:rgba(2,5,9,.88);backdrop-filter:blur(15px);display:grid;place-items:center;padding:18px}.resultCard{width:min(560px,94vw);border:1px solid #2c5870;border-radius:23px;background:linear-gradient(145deg,#102033,#070d16);padding:25px;text-align:center;box-shadow:0 30px 100px #000}.resultCard .num{font-size:60px;font-weight:950;color:var(--gold);line-height:1}.resultCard h2{margin:7px 0}.resultCard p{color:#91a4b7}.resultGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.resultGrid div{border:1px solid #20384f;border-radius:12px;background:#091522;padding:11px}.resultGrid b{display:block;font-size:17px}.resultGrid span{font-size:8px;color:#738aa0;letter-spacing:.1em}.reward{border:1px solid rgba(255,201,77,.28);border-radius:14px;padding:12px;background:rgba(255,201,77,.06);margin:13px 0}.reward b{color:var(--gold)}.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}.toast{position:fixed;z-index:300;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;background:#f2fff7;color:#06110b;padding:10px 15px;border-radius:99px;font-weight:900;font-size:11px;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:950px){.games{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.about,.profile{grid-template-columns:1fr}.skills{grid-template-columns:repeat(5,1fr)}}@media(max-width:600px){.nav{padding:9px 11px}.brand small,.pill{display:none}.wrap{padding:20px 12px 50px}.hero{padding:25px 0}.heroArt{min-height:310px}.benefits{grid-template-columns:1fr 1fr}.games{grid-template-columns:1fr}.how{grid-template-columns:1fr 1fr}.skills{grid-template-columns:repeat(2,1fr)}.shareStrip{flex-direction:column;align-items:flex-start}.seqGrid{grid-template-columns:repeat(4,58px)}.seqTile{height:58px}.reactionZone{height:280px}.resultGrid{grid-template-columns:1fr 1fr}.mission b{font-size:12px}}
+
+.scenarioLayout{display:grid;grid-template-columns:minmax(280px,430px) minmax(280px,1fr);gap:28px;align-items:center;max-width:1050px;margin:20px auto 0}
+.scenarioBoard{display:flex;justify-content:center}
+.scenarioBoard .board{width:min(78vw,430px);height:min(78vw,430px);max-width:430px;max-height:430px}
+.scenarioText{display:flex;flex-direction:column;gap:14px}
+.scenarioBadge{font-size:10px;letter-spacing:.18em;color:var(--cyan);font-weight:950}
+.scenarioQuestion{font-size:20px;line-height:1.45;font-weight:900}
+@media(max-width:760px){.scenarioLayout{grid-template-columns:1fr}.scenarioBoard .board{width:min(88vw,390px);height:min(88vw,390px)}.scenarioQuestion{font-size:17px}}
+</style>
+
+<style id="answer-feedback-fix">
+.answerFeedback{
+  margin-top:16px;padding:16px 18px;border-radius:14px;
+  border:2px solid rgba(255,255,255,.18);font-weight:800;font-size:17px;
+}
+.answerFeedback.correct{
+  background:rgba(34,197,94,.18);border-color:#22c55e;color:#86efac;
+}
+.answerFeedback.wrong{
+  background:rgba(239,68,68,.18);border-color:#ef4444;color:#fca5a5;
+}
+.answerFeedback .answerTitle{font-size:20px;margin-bottom:8px}
+.answerFeedback .correctAnswer{color:#fff;margin-top:6px}
+</style>
+
+<style id="chessiq-v6-feedback">
+.choice.correctAnswer{
+  outline:3px solid #35e07f!important;
+  outline-offset:2px;
+  border-color:#35e07f!important;
+  background:rgba(53,224,127,.16)!important;
+  color:#eafff2!important;
+  box-shadow:0 0 0 2px rgba(53,224,127,.12),0 0 24px rgba(53,224,127,.16);
+}
+.choice.wrongAnswer{
+  outline:3px solid #ff5368!important;
+  outline-offset:2px;
+  border-color:#ff5368!important;
+  background:rgba(255,83,104,.13)!important;
+  color:#ffecef!important;
+}
+.sq.correctAnswer{
+  outline:4px solid #35e07f!important;
+  outline-offset:-4px;
+  background:#174b34!important;
+  box-shadow:inset 0 0 0 2px #35e07f,0 0 22px rgba(53,224,127,.28);
+}
+.sq.wrongAnswer{
+  outline:4px solid #ff5368!important;
+  outline-offset:-4px;
+  background:#55222d!important;
+}
+.seqTile.correctAnswer{
+  outline:3px solid #35e07f!important;
+  outline-offset:2px;
+  background:#164a35!important;
+}
+.seqTile.wrongAnswer{
+  outline:3px solid #ff5368!important;
+  outline-offset:2px;
+  background:#51202c!important;
+}
+.answerKey{
+  margin:16px 0 4px;padding:14px 16px;border-radius:14px;
+  background:rgba(53,224,127,.10);border:2px solid #35e07f;
+  color:#eafff2;font-size:18px;font-weight:900;
+}
+.feedbackCard .feedbackLabel{font-size:13px;letter-spacing:.12em;font-weight:950}
+.feedbackCard .feedbackAnswer{font-size:25px}
+.feedbackTimer{font-size:10px;color:#7890a7;margin-top:12px}
+</style>
+
+
+<style id="v7-coach">
+.coachPanel{margin-top:13px;display:grid;grid-template-columns:1.2fr 1fr;gap:13px}
+.coachBox{border:1px solid #203a54;border-radius:16px;padding:16px;background:linear-gradient(145deg,#0b1827,#08111c)}
+.coachBox .sub{margin-bottom:7px}.coachMain{font-size:20px;font-weight:950}.coachReason{font-size:11px;color:#91a4b9;line-height:1.55;margin-top:6px}.coachAction{margin-top:12px}
+.feedbackAnswer{display:inline-block;padding:10px 14px;border:3px solid var(--green);outline:2px solid rgba(84,242,161,.15);outline-offset:2px;border-radius:12px;color:#eafff2!important;background:rgba(84,242,161,.10);margin:10px 0 16px}
+.feedbackLabel{font-size:16px!important}.feedbackMini{line-height:1.5}
+@media(max-width:700px){.coachPanel{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="nav"><div class="brand"><div class="brandMark">♛</div><div class="brandName">Chess<i>IQ</i><small>TRAIN • IMPROVE • DOMINATE</small></div></div><div class="navRight"><div class="pill" id="levelPill">LEVEL 1</div><button class="share" onclick="shareChessIQ()">↗ SHARE</button></div></div></header>
+
+<main class="wrap" id="home">
+<section class="hero">
+<div><div class="eyebrow">ONLINE CHESS TRAINING & PERFORMANCE ARENA</div><h1>Sharpen your mind.<br><span class="grad">Master every move.</span></h1><p class="lead">ChessIQ is a fast, game-like training platform for online chess players. It trains the mental skills behind strong play — tactical vision, calculation, memory, attention, pattern recognition and decision-making.</p><div class="buttons"><button class="btn primary" onclick="startGame('tactics')">START TRAINING →</button><button class="btn" onclick="document.getElementById('missions').scrollIntoView()">EXPLORE MISSIONS</button></div></div>
+<div class="heroArt"><div class="slamBadge">CHESSIQ GRAND SLAM • SEASON 01</div><div class="ring"></div><div class="ring r2"></div><div class="boardGlow"></div><div class="floating f1">♞</div><div class="floating f2">♟</div><div class="floating f3">♔</div><div class="heroPieces"><span>♞</span><span>♛</span><span>♚</span><span>♟</span></div><div class="gsTrophy">♜</div></div>
+</section>
+
+<section class="grandSlam" aria-label="ChessIQ Grand Slam circuit"><div class="gsTop"><div><div class="gsKicker">THE CHESSIQ CIRCUIT</div><div class="gsTitle">GRAND <span>SLAM</span></div></div><div class="gsNote">Four stages. One training journey. Build the mental game that helps you perform when the board gets difficult.</div></div><div class="gsStages"><div class="gsStage"><div class="gsNum">01</div><div class="gsMedal">♞</div><div><b>VISION OPEN</b><span>See checks, captures and threats before they become problems.</span></div></div><div class="gsStage"><div class="gsNum">02</div><div class="gsMedal">♛</div><div><b>CALCULATION CLASSIC</b><span>Compare candidate moves and calculate with discipline.</span></div></div><div class="gsStage"><div class="gsNum">03</div><div class="gsMedal">♟</div><div><b>MEMORY MASTERS</b><span>Hold positions, patterns and piece locations in your mind.</span></div></div><div class="gsStage"><div class="gsNum">04</div><div class="gsMedal">♔</div><div><b>DECISION CUP</b><span>Make practical choices and protect your game from blunders.</span></div></div></div></section>
+
+<div class="title"><div><h2>What is ChessIQ?</h2><p>Train the skills that happen before your move.</p></div></div>
+<section class="about"><div class="panel"><p class="aboutLead"><b>ChessIQ turns mental training into short, repeatable challenges.</b><br>Instead of only solving traditional puzzles, you practise the underlying abilities that online chess demands. Sessions are quick, varied and scored so you can see where you are strong and what deserves more work.</p><p class="aboutLead">The goal is simple: <b>see faster, calculate cleaner, remember more and make fewer impulsive moves.</b></p></div><div class="panel"><div class="benefits">
+<div class="benefit"><div class="ico">🎯</div><b>Tactical Vision</b><p>Spot threats, captures and tactical patterns faster.</p></div>
+<div class="benefit"><div class="ico">⚡</div><b>Calculation</b><p>Practise choosing a line under time pressure.</p></div>
+<div class="benefit"><div class="ico">🧠</div><b>Board Memory</b><p>Hold positions and piece locations in your mind.</p></div>
+<div class="benefit"><div class="ico">👁️</div><b>Attention</b><p>Scan the board and find the important detail.</p></div>
+<div class="benefit"><div class="ico">🛡️</div><b>Blunder Control</b><p>Build the habit of checking the opponent's reply.</p></div>
+<div class="benefit"><div class="ico">📈</div><b>Track Progress</b><p>Earn XP and develop your personal ChessIQ profile.</p></div>
+</div></div></section>
+
+<div class="title"><div><h2>Your Chess Profile</h2><p>ChessIQ rating is an internal training score, not an official chess rating.</p></div></div>
+<section class="profile"><div class="panel"><div class="sub">CHESSIQ RATING</div><div class="rating" id="rating">1000</div><div class="sub" id="meta">LEVEL 1 • 0 XP</div><div class="xp"><i id="xpFill"></i></div><div style="font-size:11px;color:#8195a9;line-height:1.5">Complete missions to earn XP, raise your training score and discover your strongest mental skill.</div></div><div class="panel"><div class="skills" id="skills"></div></div></section>
+<section class="coachPanel">
+ <div class="coachBox"><div class="sub">PERSONAL COACH</div><div class="coachMain" id="coachMain">Start a mission to build your training profile.</div><div class="coachReason" id="coachReason">ChessIQ will use your recent answers—not just your lifetime score—to suggest what to train next.</div><div class="coachAction"><button class="btn primary" id="coachButton" onclick="startRecommended()">START RECOMMENDED →</button></div></div>
+ <div class="coachBox"><div class="sub">RECENT TRAINING</div><div class="coachReason" id="recentStats">No sessions yet. Your first session will establish your baseline.</div></div>
+</section>
+
+<div class="title" id="missions"><div><h2>5 Fast Mind Training Games</h2><p>Different drills. Different skills. Designed to be quick and playable.</p></div></div>
+<section class="games" id="gameCards"></section>
+
+<div class="title"><div><h2>How ChessIQ Helps You</h2></div></div>
+<section class="how"><div class="step"><strong>01</strong><b>Choose a skill</b><span>Pick the area you want to sharpen.</span></div><div class="step"><strong>02</strong><b>Play a short drill</b><span>Most sessions take only a few minutes.</span></div><div class="step"><strong>03</strong><b>See your result</b><span>Get a score, XP and skill feedback.</span></div><div class="step"><strong>04</strong><b>Train your weakness</b><span>Return to the skill that needs work.</span></div></section>
+
+<section class="shareStrip"><div><b>♞ Think you can beat my ChessIQ?</b><p>Share your profile and challenge a friend to a training duel.</p></div><button class="btn primary" onclick="shareChessIQ()">↗ CHALLENGE A FRIEND</button></section>
+</main>
+<footer>ChessIQ is an independent chess training and entertainment platform. It does not provide an official chess rating or affiliation with any chess website.</footer>
+
+<section id="arena" class="hidden">
+<div class="arenaTop"><button class="back" onclick="exitArena()">← Back</button><div class="mission"><small id="missionType">MISSION</small><b id="missionTitle">TACTICAL VISION</b></div><div class="arenaScore" id="arenaScore">0</div></div>
+<div class="arenaBody"><div class="brief"><b id="briefTitle">MISSION BRIEF</b><p id="briefText">Let's train.</p></div><div class="arenaArea" id="arenaArea"></div></div>
+</section>
+
+<section class="result hidden" id="result"><div class="resultCard"><div style="font-size:9px;letter-spacing:.22em;color:var(--cyan);font-weight:900">TRAINING COMPLETE</div><div class="num" id="resultScore">0</div><h2 id="resultTitle">ChessIQ 1000</h2><p id="resultLine">Session complete.</p><div class="resultGrid"><div><b id="resXP">+0</b><span>XP</span></div><div><b id="resStrength">—</b><span>STRENGTH</span></div><div><b id="resTarget">—</b><span>TRAIN NEXT</span></div></div><div class="reward"><b id="reward">🏆 FIRST WIN</b><br><span style="font-size:10px;color:#9caebe">Virtual training badge unlocked.</span></div><div class="actions"><button class="btn primary" id="again">TRAIN AGAIN</button><button class="btn" onclick="challengeFriend()">↗ SHARE RESULT</button><button class="btn" onclick="exitArena()">EXIT</button></div></div></section>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const labels={vision:'Tactical Vision',calculation:'Calculation',memory:'Board Memory',attention:'Attention',accuracy:'Blunder Control'};
+const missions={
+ tactics:{icon:'🎯',title:'Tactical Vision',tag:'PATTERN RECOGNITION',desc:'Find the strongest move from a chess position.',skill:'vision'},
+ calculation:{icon:'⚡',title:'Calculation Sprint',tag:'CALCULATION SPEED',desc:'Make fast chess decisions before the clock runs out.',skill:'calculation'},
+ memory:{icon:'🧠',title:'Memory Board',tag:'BOARD MEMORY',desc:'Study a position, then recall what you saw.',skill:'memory'},
+ scan:{icon:'👁️',title:'Board Scan',tag:'VISUAL AWARENESS',desc:'Find the correct square hidden in a busy board.',skill:'attention'},
+ blunder:{icon:'♟️',title:'Chess Decision Lab',tag:'GAME SCENARIOS',desc:'Study a position and choose the best practical decision.',skill:'accuracy'}
+};
+const pieces={w:{K:'♔',Q:'♕',R:'♖',B:'♗',N:'♘',P:'♙'},b:{K:'♚',Q:'♛',R:'♜',B:'♝',N:'♞',P:'♟'}};
+const files=['a','b','c','d','e','f','g','h'];
+let player=JSON.parse(localStorage.getItem('chessiq_v2')||'null')||{xp:0,rating:1000,skills:{vision:50,calculation:50,memory:50,attention:50,accuracy:50},history:[]};
+player.skills=Object.assign({vision:50,calculation:50,memory:50,attention:50,accuracy:50},player.skills||{});player.history=Array.isArray(player.history)?player.history:[];
+let current=null,timers=[],gameScore=0,gameActive=false;
+
+function save(){localStorage.setItem('chessiq_v2',JSON.stringify(player))}
+function renderProfile(){
+ const level=Math.floor(player.xp/300)+1;
+ $('rating').textContent=player.rating;$('levelPill').textContent='LEVEL '+level;$('meta').textContent=`LEVEL ${level} • ${player.xp} XP`;$('xpFill').style.width=((player.xp%300)/3)+'%';
+ $('skills').innerHTML=Object.entries(labels).map(([k,n])=>`<div class="skill"><b>${player.skills[k]}</b><span>${n.toUpperCase()}</span><div class="skillBar"><i style="width:${player.skills[k]}%"></i></div></div>`).join('');
+ renderCoach();
+}
+function getWeakSkill(){
+ const recent=player.history.slice(-12);
+ if(!recent.length)return Object.entries(player.skills).sort((a,b)=>a[1]-b[1])[0][0];
+ const sums={vision:0,calculation:0,memory:0,attention:0,accuracy:0},counts={vision:0,calculation:0,memory:0,attention:0,accuracy:0};
+ recent.forEach(h=>{if(sums[h.skill]!==undefined){sums[h.skill]+=h.score;counts[h.skill]++}});
+ const tested=Object.keys(sums).filter(k=>counts[k]>0).map(k=>({k,avg:sums[k]/counts[k]}));
+ if(!tested.length)return Object.entries(player.skills).sort((a,b)=>a[1]-b[1])[0][0];
+ return tested.sort((a,b)=>a.avg-b.avg)[0].k;
+}
+function renderCoach(){
+ const skill=getWeakSkill(), name=labels[skill];
+ const recent=player.history.slice(-10);const avg=recent.length?Math.round(recent.reduce((a,h)=>a+h.score,0)/recent.length):0;
+ $('coachMain').textContent=recent.length<3?'Build your baseline with a few more sessions.':`Recommended focus: ${name}`;
+ $('coachReason').textContent=recent.length<3?'Play 3 sessions across different drills. ChessIQ will then identify your weaker recent skill and recommend a targeted mission.':`Your recent performance is weakest in ${name}. Training this skill next is more useful than simply repeating your strongest game.`;
+ $('coachButton').textContent='TRAIN '+name.toUpperCase()+' →';
+ $('recentStats').innerHTML=recent.length?`Last ${recent.length} sessions • average <b style="color:#fff">${avg}%</b><br>${recent.slice(-5).reverse().map(h=>`${labels[h.skill]}: ${h.score}%`).join(' • ')}`:'No sessions yet. Your first session will establish your baseline.';
+}
+function startRecommended(){const s=getWeakSkill();const map={vision:'tactics',calculation:'calculation',memory:'memory',attention:'scan',accuracy:'blunder'};startGame(map[s])}
+
+function renderCards(){ $('gameCards').innerHTML=Object.entries(missions).map(([id,m])=>`<article class="card" onclick="startGame('${id}')"><div class="icon">${m.icon}</div><h3>${m.title}</h3><p>${m.desc}</p><div class="tag">${m.tag}</div><div class="play">PLAY →</div></article>`).join('') }
+function clearTimers(){timers.forEach(t=>{clearTimeout(t);clearInterval(t)});timers=[]}
+function arena(id){current=id;gameScore=0;gameActive=true;clearTimers();$('arenaScore').textContent='0';$('missionType').textContent=missions[id].tag;$('missionTitle').textContent=missions[id].title.toUpperCase();$('arena').classList.remove('hidden');document.body.style.overflow='hidden'}
+function setBrief(title,text){
+ $('briefTitle').textContent=title;
+ $('briefText').innerHTML=text;
+}
+function setScore(n){gameScore=n;$('arenaScore').textContent=n}
+
+function startGame(id){const old=document.getElementById('answerFeedback');if(old)old.remove();arena(id);if(id==='tactics')tactics();if(id==='calculation')calculation();if(id==='memory')memory();if(id==='scan')scan();if(id==='blunder')blunder()}
+function sound(ok=true){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=ok?620:180;o.type='sine';g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.07,c.currentTime+.01);g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.12);o.start();o.stop(c.currentTime+.14)}catch(e){}}
+function finish(raw,skill){
+ gameActive=false;clearTimers();const xp=Math.max(25,Math.round(raw*.72));player.xp+=xp;player.rating=Math.max(800,Math.min(2400,player.rating+Math.round((raw-55)/4)));player.skills[skill]=Math.min(99,player.skills[skill]+(raw>=70?2:1));
+ player.history.push({skill,score:raw,at:Date.now()});if(player.history.length>40)player.history=player.history.slice(-40);save();renderProfile();
+ const order=Object.entries(player.skills).sort((a,b)=>b[1]-a[1]);$('resultScore').textContent=raw;$('resultTitle').textContent='ChessIQ '+player.rating;$('resultLine').textContent=raw>=85?'Outstanding session. Your mind is getting faster and cleaner.':raw>=60?'Good session. Keep building consistency.':'Keep training — accuracy first, speed second.';$('resXP').textContent='+'+xp;$('resStrength').textContent=labels[order[0][0]];$('resTarget').textContent=labels[getWeakSkill()];$('reward').textContent=raw>=90?'🏆 CHESSIQ ACE':raw>=75?'♛ TACTICAL HUNTER':raw>=55?'⚡ RAPID RISING':'♟ FIRST WIN';$('result').classList.remove('hidden');$('again').onclick=()=>startGame(current)
+}
+function exitArena(){gameActive=false;clearTimers();$('arena').classList.add('hidden');$('result').classList.add('hidden');document.body.style.overflow='';renderProfile()}
+
+
+/* CHESSIQ V6 — practical, non-repeating training engine */
+const tacticsBank=[
+ {q:'You have a forcing move available. Which candidates should you check first?',opts:['Checks, captures, threats','Pawn pushes only','King moves only','Exchange queens immediately'],c:0,w:'Checks, captures and threats are the core forcing-move scan. They reduce the opponent’s choices.'},
+ {q:'You can capture a loose piece, but the opponent has a check. What should you do?',opts:['Calculate the opponent’s forcing reply first','Take the piece instantly','Push a pawn','Ignore the check'],c:0,w:'Before grabbing material, check the opponent’s forcing moves. A loose piece can be bait.'},
+ {q:'Your opponent just moved a defender away. What is the best tactical response?',opts:['Look for what became loose','Move the same piece again','Castle automatically','Trade any pawn'],c:0,w:'A defender moving can uncover a capture, fork, pin or mating idea. Re-scan the changed position.'},
+ {q:'A pinned piece appears to be defending another piece. What should you investigate?',opts:['Whether the pin makes the defender unable to move','Whether you can move a pawn','Whether to trade bishops','Whether the clock is low'],c:0,w:'A pinned defender may not be able to recapture. This is a common tactical detail.'},
+ {q:'Your queen can win material but has only one escape square. What should you check?',opts:['The opponent’s forcing replies and queen escape','Only the material count','Your next pawn move','Nothing — take immediately'],c:0,w:'Material is useful only if the resulting position is safe. Calculate the opponent’s forcing sequence.'},
+ {q:'An enemy king has few legal squares. Which tactical idea becomes more important?',opts:['Checks and mating nets','Random pawn moves','Early queen trade','Moving the rook backwards'],c:0,w:'A restricted king is vulnerable to checks and mating patterns because it has fewer escape squares.'},
+ {q:'You are unsure between two candidate moves. What is the strongest practical method?',opts:['Compare the opponent’s best reply to each','Choose the prettier move','Move the fastest','Always exchange queens'],c:0,w:'A candidate is only as good as the position after the opponent’s best response.'},
+ {q:'What should you re-check immediately after the opponent makes a move?',opts:['Checks, captures and threats','Only your planned move','Only your king','Only the clock'],c:0,w:'The board changed. Re-scanning forcing moves prevents you from playing an outdated plan.'},
+ {q:'A rook attacks an open file toward the king. What should you look for?',opts:['Checks, back-rank ideas and loose defenders','A random pawn sacrifice','A knight retreat','An automatic queen trade'],c:0,w:'Open files near the king often create tactical pressure, especially when escape squares are limited.'},
+ {q:'You see a tempting fork. What must you confirm before playing it?',opts:['That the fork is legal and cannot be tactically refuted','That it wins at least one pawn','That it looks aggressive','That it uses your queen'],c:0,w:'A tactical idea is not a tactic until you verify legality and the opponent’s best response.'},
+ {q:'When calculating a forcing line, which reply should you consider first?',opts:['The opponent’s strongest forcing reply','The reply you hope they choose','A random legal move','Only pawn moves'],c:0,w:'Strong players calculate against resistance, not cooperation.'},
+ {q:'You have an attack but your king is exposed. What should you include in your calculation?',opts:['The opponent’s checks against your king','Only your attacking moves','Only captures by your queen','Nothing else'],c:0,w:'Attack and defence are connected. An exposed king can turn an advantage into a blunder.'},
+ {q:'A piece is attacked twice and defended once. What tactical question should you ask?',opts:['Can I win it or create a stronger threat?','Can I move a pawn on the other side?','Can I repeat the position?','Can I ignore it?'],c:0,w:'Count attackers and defenders, then calculate the tactical consequences rather than assuming the piece is safe.'},
+ {q:'You are ahead in material. Which tactical habit remains important?',opts:['Keep checking the opponent’s threats','Stop calculating completely','Attack every pawn','Always trade your queen'],c:0,w:'Being ahead does not make the position blunder-proof. Threat awareness still matters.'},
+ {q:'You spot a check that wins material, but another check may be mate. What should you compare?',opts:['All forcing checks before choosing','Only the first check you see','Only captures','Only moves with your queen'],c:0,w:'When several forcing moves exist, compare their concrete results rather than stopping at the first idea.'}
+];
+
+const calculationBank=[
+ {q:'You have 12 seconds and two candidate moves. What should decide your choice?',opts:['The opponent’s strongest reply to each','Which move looks nicer','Which piece moves furthest','A random choice'],c:0,w:'Fast calculation means comparing concrete replies, not guessing from appearance.'},
+ {q:'Your opponent gives check. What is your first calculation task?',opts:['Find legal ways to answer the check','Look for a pawn capture elsewhere','Start a kingside attack','Trade a rook'],c:0,w:'A check must be answered legally. Then you can return to your wider plan.'},
+ {q:'A forcing capture appears. What should you calculate next?',opts:['The opponent’s best recapture or tactical reply','Your next three pawn moves','Only your material count','Nothing'],c:0,w:'The value of a capture depends on the opponent’s strongest response.'},
+ {q:'You are low on time. Which approach is safest?',opts:['Prioritise forcing moves and blunder checks','Calculate every legal move','Move instantly without checking','Only look at your own plan'],c:0,w:'Under time pressure, forcing moves and a quick opponent-threat check give the best practical discipline.'},
+ {q:'A move wins a pawn but weakens your king. What should you compare?',opts:['Material gain versus the opponent’s attacking resources','Only the pawn value','Only your clock','Only the opening plan'],c:0,w:'Concrete king safety can outweigh a small material gain.'},
+ {q:'You calculate three moves ahead but miss a forcing check on move two. What failed?',opts:['Candidate-move discipline','Opening knowledge','Endgame technique','Piece development'],c:0,w:'Calculation depth is useless if you miss forcing replies. Always scan checks, captures and threats.'},
+ {q:'You have a choice between a safe equalising move and a risky attack. What should you ask?',opts:['What happens after the opponent’s best defence?','Which move looks more exciting?','Which move uses the queen?','Which move is faster?'],c:0,w:'Evaluate the position after resistance. That is the practical core of calculation.'},
+ {q:'A tactical line starts with a sacrifice. What must you verify?',opts:['The forcing continuation and opponent’s defensive resources','Only that the sacrifice looks beautiful','Only the first move','Nothing if you are attacking'],c:0,w:'Sacrifices require concrete justification. Check the full forcing sequence.'},
+ {q:'Your opponent’s king is in check. What is the useful calculation mindset?',opts:['List legal king moves, captures and blocks','Assume they resign','Calculate only your next attack','Move another piece'],c:0,w:'For checks, systematically examine king moves, captures and blocks.'},
+ {q:'You are deciding whether to trade queens. What matters most?',opts:['The resulting position after the exchange','Whether queens are generally strong','Only your rating','Only the clock'],c:0,w:'Queen trades should be judged by the resulting position, not by a universal rule.'},
+ {q:'A move attacks two pieces. What is the calculation priority?',opts:['Check whether the opponent has a stronger forcing move','Assume both pieces are lost','Move immediately','Ignore the second piece'],c:0,w:'A double attack only works if the opponent cannot answer with a stronger tactical resource.'},
+ {q:'You find a checkmate threat. What should you verify before celebrating?',opts:['Whether the opponent has a forcing defence','Only your attack','Only the queen’s location','Nothing'],c:0,w:'Threats are valuable only when they survive the opponent’s strongest defence.'},
+ {q:'When comparing two candidate moves, what is a useful quick scorecard?',opts:['King safety, material, activity and opponent reply','Piece colour only','How aggressive it looks','How quickly you can click'],c:0,w:'A compact evaluation framework helps online players decide consistently under time pressure.'},
+ {q:'Your opponent makes an unexpected move. What should you do before continuing your plan?',opts:['Recalculate the new tactical threats','Play your original move automatically','Speed up','Ignore the change'],c:0,w:'Unexpected moves are a signal to recalculate. Online players lose many games by following an old plan.'},
+ {q:'You are winning but the clock is low. What should you prioritise?',opts:['Simple safe moves with a quick blunder check','Complicated sacrifices','Maximum speed without checking','Only attacks'],c:0,w:'When ahead and low on time, simplify decisions and avoid unnecessary complications.'}
+];
+
+const blunderBank=[
+ {q:'You are White. The queen on d4 is attacked by the knight on f5, but you can also win a pawn on b7. What is the best practical decision?',opts:['Take b7 immediately','Check the queen attack and calculate before taking material','Move a random pawn','Trade rooks'],c:1,w:'The opponent has a concrete threat against your queen. Deal with forcing threats before grabbing a pawn.',board:{d4:'♕',f5:'♞',b7:'♟',e4:'♙',g1:'♔',g8:'♚',c3:'♘',f8:'♝'}},
+ {q:'You are Black. Your king on g8 is exposed and White has a queen and bishop aimed toward it. Which decision is most important?',opts:['Start a pawn attack on the other wing','Look for the opponent’s checks and improve king safety','Win a side pawn','Move the same knight again'],c:1,w:'When your king is exposed, the opponent’s forcing checks can become more important than a small material gain.',board:{g8:'♚',g7:'♟',f7:'♟',h7:'♟',d1:'♕',c4:'♗',g1:'♔',e5:'♘'}},
+ {q:'White can capture the rook on e7, but the black queen on h4 gives a possible mating check after the capture. What should White do?',opts:['Capture instantly because a rook is valuable','Calculate the opponent’s forcing checks after the capture','Push a pawn on the queenside','Offer a queen trade without checking'],c:1,w:'A winning capture is only good if the opponent has no stronger forcing reply. Checks must be calculated first.',board:{e7:'♜',h4:'♛',g2:'♙',g1:'♔',f3:'♘',e1:'♖',d1:'♕',g8:'♚'}},
+ {q:'You are ahead by a rook. The queens are still on the board and your king has weak shelter. Which is the strongest practical plan?',opts:['Force complications to win another pawn','Look for a safe simplification if it removes counterplay','Sacrifice the rook for an attack','Ignore the opponent’s threats'],c:1,w:'When ahead, reducing the opponent’s counterplay can be more valuable than chasing extra material.',board:{g1:'♔',g2:'♙',f2:'♙',h2:'♙',d1:'♕',d5:'♛',a1:'♖',f6:'♞',g8:'♚'}},
+ {q:'White has a knight on e5 attacking f7. Black can answer with a forcing check on b4. What should White consider before attacking f7?',opts:['Only the f7 pawn','The opponent’s forcing check and its consequences','Only the clock','Moving the king without calculation'],c:1,w:'A tactical opportunity can disappear if the opponent has a stronger forcing move. Compare threats before committing.',board:{e5:'♘',f7:'♟',b4:'♛',g1:'♔',g8:'♚',d1:'♕',c3:'♙',f1:'♗'}},
+ {q:'Your bishop on c4 is attacked by a pawn. You see a tempting queen move that attacks h7. What should you do?',opts:['Ignore the bishop and attack h7','Check whether the bishop is safe and compare the tactical threat','Move a different pawn','Exchange queens automatically'],c:1,w:'A useful attacking move can still be a blunder if it leaves a valuable piece hanging without compensation.',board:{c4:'♗',d5:'♟',d1:'♕',h7:'♟',g8:'♚',g1:'♔',f3:'♘',e7:'♜'}},
+ {q:'The position is quiet, but your opponent just moved their queen from d8. Which habit is strongest before you play your planned move?',opts:['Play the plan automatically','Re-scan checks, captures, threats and newly loose pieces','Move your fastest piece','Assume nothing changed'],c:1,w:'Every opponent move changes the tactical position. A quick re-scan prevents playing an outdated plan.',board:{g1:'♔',d1:'♕',e1:'♖',f3:'♘',c4:'♗',g8:'♚',d6:'♛',e5:'♟'}},
+ {q:'You can win a pawn on d5, but doing so opens the d-file toward your king. What is the best decision?',opts:['Take it without looking','Calculate the opened file and the opponent’s attacking resources','Always avoid pawn captures','Move the queen randomly'],c:1,w:'Captures can change lines on the board. Opening a file toward your own king may create a tactical cost.',board:{d5:'♟',d4:'♙',d1:'♖',d8:'♜',g1:'♔',g8:'♚',c3:'♘',c6:'♞'}},
+ {q:'You spot a possible fork with your knight on c7. Before playing it, what must you verify?',opts:['That it looks aggressive','That the move is legal and the opponent has no stronger forcing reply','That it wins a pawn','That your clock is above 30 seconds'],c:1,w:'A tactic is real only after legality and the opponent’s strongest response have been checked.',board:{c7:'♘',d8:'♚',e8:'♜',b5:'♟',g1:'♔',d1:'♕',f3:'♗',g8:'♚'}},
+ {q:'Your opponent attacks your queen and also creates a mate threat. Which priority is correct?',opts:['Save a pawn first','Address the strongest forcing threat, especially the mate threat','Attack a rook on the other side','Make a random developing move'],c:1,w:'Not all threats are equal. A mating threat takes priority over a small material opportunity.',board:{d4:'♕',e5:'♞',h7:'♛',g2:'♙',g1:'♔',f1:'♗',g8:'♚',f7:'♟'}},
+ {q:'You are in an endgame and can win a pawn, but your king is far away and the opponent can activate their rook. What should guide your choice?',opts:['Pawn count only','Compare the pawn gain with the opponent’s activity and counterplay','Always take every pawn','Move instantly'],c:1,w:'Endgame decisions are concrete. Extra material is useful only if it does not give the opponent dangerous activity.',board:{g5:'♔',d5:'♙',a5:'♟',e8:'♜',g8:'♚',b2:'♙',h2:'♙',f6:'♟'}},
+ {q:'You have only 8 seconds online. Which move is the best practical choice when two moves look similar?',opts:['Choose randomly','Prefer the safer move after a quick check of checks, captures and threats','Always attack','Always trade queens'],c:1,w:'With little time, disciplined simplicity is often stronger than unnecessary complications. A quick blunder check still matters.',board:{g1:'♔',f2:'♙',g2:'♙',h2:'♙',d1:'♕',g8:'♚',f7:'♟',d5:'♛'}}
+];
+
+function loadUsed(){
+  try{return JSON.parse(localStorage.getItem('chessiq_used_v6')||'{}')||{}}catch(e){return{}}
+}
+function saveUsed(u){localStorage.setItem('chessiq_used_v6',JSON.stringify(u))}
+function pickUnique(pool,key,count){
+  const used=loadUsed(); let ids=Array.isArray(used[key])?used[key]:[];
+  let available=pool.map((_,i)=>i).filter(i=>!ids.includes(i));
+  if(available.length<count){ids=[];available=pool.map((_,i)=>i)}
+  for(let i=available.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[available[i],available[j]]=[available[j],available[i]]}
+  const chosen=available.slice(0,count);
+  used[key]=ids.concat(chosen).slice(-pool.length);
+  saveUsed(used);
+  return chosen.map(i=>pool[i]);
+}
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function showFeedback(label,answer,why,nextFn,good=true,extra='',answerHtml=''){
+ const area=$('arenaArea');
+ area.innerHTML=`<div class="feedbackCard">
+  <div class="feedbackLabel" style="color:${good?'#54f2a1':'#ff6878'}">${good?'✓ CORRECT':'✕ WRONG ANSWER'}</div>
+  <div class="answerKey">Correct answer: ${answerHtml||answer}</div>
+  <div class="feedbackWhy"><b>Why:</b> ${why}</div>
+  ${extra?`<div class="feedbackMini">${extra}</div>`:''}
+  <button class="primary feedbackNext" id="feedbackNext">CONTINUE →</button>
+  <div class="feedbackTimer">Next question will appear automatically…</div>
+ </div>`;
+ sound(good);
+ let done=false;
+ const go=()=>{if(done)return;done=true;if(!gameActive)return;nextFn()};
+ const auto=setTimeout(go,3200);
+ $('feedbackNext').onclick=()=>{clearTimeout(auto);go()};
+}
+
+/* 1. TACTICAL VISION — practical pattern recognition, 15-question pool */
+function tactics(){
+ const qs=pickUnique(tacticsBank,'tactics',5); let i=0,total=0;
+ setBrief('TACTICAL VISION','Five practical rounds. Questions are drawn from an unused pool first and answer positions are shuffled.<br><br><b style="color:#54f2a1">REAL-GAME BENEFIT:</b> Train the forcing-move scan used in online games.<br>Become quicker at spotting checks, captures, threats and tactical changes after every opponent move.');
+ function next(){
+  if(i===qs.length){finish(Math.round(total/5),'vision');return}
+  const x=qs[i];
+  $('arenaArea').innerHTML=`<div style="width:100%"><div class="status">ROUND ${i+1} / ${qs.length}</div><div style="text-align:center;font-size:21px;font-weight:900;max-width:760px;margin:20px auto">${x.q}</div><div class="choices" id="choices"></div></div>`;
+  const buttons=[]; const opts=shuffle(x.opts.map((text,j)=>({text,correct:j===x.c})));
+  opts.forEach(o=>{
+   const b=document.createElement('button');b.className='choice';b.textContent=o.text;buttons.push(b);
+   b.onclick=()=>{if(!gameActive||buttons.some(z=>z.disabled))return;buttons.forEach(z=>z.disabled=true);const ok=o.correct;total+=ok?100:25;const correctBtn=buttons.find(z=>z.textContent===x.opts[x.c]);if(correctBtn)correctBtn.classList.add('correctAnswer');if(!ok)b.classList.add('wrongAnswer');i++;showFeedback(ok?'CORRECT':'WRONG ANSWER',x.opts[x.c],x.w,next,ok,'Your answer: '+o.text)};
+   $('choices').appendChild(b);
+  });
+ } next();
+}
+
+/* 2. CALCULATION SPRINT — useful online-clock decisions, 15-question pool */
+function calculation(){
+ const qs=pickUnique(calculationBank,'calculation',5); let i=0,total=0;
+ setBrief('CALCULATION SPRINT','Five fast calculation decisions. A 7-second clock rewards disciplined thinking, not panic. Answer choices are shuffled each round.<br><br><b style="color:#54f2a1">REAL-GAME BENEFIT:</b> Practise comparing candidate moves against the opponent’s best reply.<br>This is especially useful in rapid and blitz, where calculation must stay accurate under time pressure.');
+ function next(){
+  if(i===qs.length){finish(Math.round(total/5),'calculation');return}
+  const x=qs[i];let left=7,answered=false;
+  $('arenaArea').innerHTML=`<div style="width:100%"><div class="status">ROUND ${i+1} / ${qs.length} • TIME <strong id="ct">7.0</strong>s</div><div class="timer"><i id="tb"></i></div><div style="text-align:center;font-size:23px;font-weight:950;max-width:760px;margin:24px auto">${x.q}</div><div class="choices" id="choices"></div></div>`;
+  const buttons=[];const opts=shuffle(x.opts.map((text,j)=>({text,correct:j===x.c})));
+  opts.forEach(o=>{const b=document.createElement('button');b.className='choice';b.textContent=o.text;buttons.push(b);b.onclick=()=>{if(!gameActive||answered)return;answered=true;clearInterval(iv);buttons.forEach(z=>z.disabled=true);const ok=o.correct;total+=ok?100:25;const correctBtn=buttons.find(z=>z.textContent===x.opts[x.c]);if(correctBtn)correctBtn.classList.add('correctAnswer');if(!ok)b.classList.add('wrongAnswer');i++;showFeedback(ok?'CORRECT':'WRONG ANSWER',x.opts[x.c],x.w,next,ok,'Your answer: '+o.text)};$('choices').appendChild(b)});
+  const iv=setInterval(()=>{if(!gameActive||answered){clearInterval(iv);return}left-=.1;$('ct').textContent=Math.max(0,left).toFixed(1);$('tb').style.width=Math.max(0,left/7*100)+'%';if(left<=0){answered=true;clearInterval(iv);buttons.forEach(z=>z.disabled=true);total+=20;const correctBtn=buttons.find(z=>z.textContent===x.opts[x.c]);if(correctBtn)correctBtn.classList.add('correctAnswer');i++;showFeedback('WRONG ANSWER',x.opts[x.c],x.w,next,false,'Time ran out — accuracy still comes first.')}} ,100);timers.push(iv);
+ } next();
+}
+
+/* 3. MEMORY BOARD — random sequences, no immediate repeats */
+function memory(){
+ const levels=[{len:4,time:6,name:'EASY'},{len:6,time:7,name:'FOCUS'},{len:8,time:8,name:'HARD'}];
+ let round=0,total=0;
+ setBrief('MEMORY BOARD','Progressive memory training: <b>EASY → FOCUS → HARD</b>. The sequence grows from 4 to 8 pieces as you advance.<br><br><b style="color:#54f2a1">REAL-GAME BENEFIT:</b> Build the ability to hold piece locations in your head while calculating.<br>Start simple, then gradually handle more information like a real chess position.');
+ function makeSequence(len){
+  const symbols=['♔','♕','♖','♗','♘','♙','♚','♛','♜','♝','♞','♟'];
+  const used=loadUsed();const old=used.memorySeq||'';let seq='';
+  do{seq=Array.from({length:len},()=>symbols[Math.floor(Math.random()*symbols.length)]).join('')}while(seq===old);
+  used.memorySeq=seq;saveUsed(used);return [...seq];
+ }
+ function next(){
+  if(round===levels.length){finish(Math.round(total/levels.length),'memory');return}
+  const L=levels[round],seq=makeSequence(L.len);let left=L.time;
+  $('arenaArea').innerHTML=`<div style="width:100%;text-align:center"><div class="status">LEVEL ${round+1} / 3 • ${L.name} • STUDY <strong id="mt">${L.time}.0</strong>s</div><div class="timer"><i id="mb"></i></div><div class="seqGrid" id="seq"></div><p style="color:#7e92a7;font-size:11px">Remember the exact order from 1 → ${L.len}.</p></div>`;
+  const grid=$('seq');seq.forEach((p,i)=>{const b=document.createElement('button');b.className='seqTile';b.textContent=p;b.dataset.i=i;grid.appendChild(b)});
+  const iv=setInterval(()=>{left-=.1;$('mt').textContent=Math.max(0,left).toFixed(1);$('mb').style.width=Math.max(0,left/L.time*100)+'%';if(left<=0){clearInterval(iv);ask(seq,L)}},100);timers.push(iv);
+ }
+ function ask(seq,L){
+  const order=seq.map((_,i)=>i),shuffled=shuffle(order);let pick=0,finished=false;
+  setBrief('MEMORY BOARD',`<b>${L.name} LEVEL</b> — reproduce the ${L.len}-piece sequence. One mistake ends this level, then you will see the correct sequence.`);
+  $('arenaArea').innerHTML=`<div style="width:100%;text-align:center"><div class="status">LEVEL ${round+1} / 3 • INPUT • <strong id="mp">0 / ${L.len}</strong></div><div class="seqGrid" id="seq2"></div></div>`;
+  const g=$('seq2');
+  shuffled.forEach(idx=>{
+   const b=document.createElement('button');b.className='seqTile';b.textContent=seq[idx];b.dataset.idx=idx;
+   b.onclick=()=>{
+    if(!gameActive||finished)return;
+    const ok=idx===order[pick];
+    if(ok){b.classList.add('correctAnswer');pick++;$('mp').textContent=pick+' / '+L.len;
+      if(pick===L.len){finished=true;total+=100;round++;const answer=seq.map((v,k)=>`${k+1}. ${v}`).join('  ');showFeedback('CORRECT','Sequence reproduced','You held the complete sequence accurately. As the level increases, this mirrors the mental load of visualising a changing chess position.',next,true,'Correct sequence: '+answer)}
+    }else{
+      finished=true;total+=25;const correctTile=g.querySelector(`[data-idx="${order[pick]}"]`);if(correctTile)correctTile.classList.add('correctAnswer');b.classList.add('wrongAnswer');round++;const answer=seq.map((v,k)=>`${k+1}. ${v}`).join('  ');showFeedback('WRONG ANSWER','The sequence shown below','One incorrect selection breaks the sequence. That is why the drill starts easy and progressively increases the information load.',next,false,'Correct sequence: '+answer);
+    }
+   };g.appendChild(b);
+  });
+ }
+ next();
+}
+
+/* 4. BOARD SCAN — random target squares and board layouts, no target repeats until the pool cycles */
+function makeBoard(piecesMap={}){
+ const b=document.createElement('div');b.className='board';
+ for(let r=7;r>=0;r--)for(let c=0;c<8;c++){
+  const sq=files[c]+(r+1),el=document.createElement('div');el.className='sq '+(((r+c)%2===0)?'light':'dark');el.dataset.sq=sq;
+  if(piecesMap[sq])el.innerHTML='<span>'+piecesMap[sq]+'</span>';
+  const co=document.createElement('span');co.className='coord';co.textContent=sq;el.appendChild(co);b.appendChild(el);
+ } return b;
+}
+function scan(){
+ const targets=pickUnique(files.flatMap(f=>[1,2,3,4,5,6,7,8]).map(r=>f+r),'scanSquares',5);
+ let round=0,total=0,locked=false;
+ setBrief('BOARD SCAN','Memorise the highlighted square, then click that square after the highlight disappears. Each round uses a different target and a new board layout.<br><br><b style="color:#54f2a1">REAL-GAME BENEFIT:</b> This trains whole-board scanning so you can quickly notice loose pieces, checks, threats and tactical opportunities.');
+ function next(){
+  if(round>=targets.length){finish(Math.round(total/targets.length),'attention');return}
+  locked=false;
+  const target=targets[round],map={};
+  const symbols=['♙','♟','♘','♞','♗','♝','♖','♜'];
+  const squares=shuffle(files.flatMap(f=>[1,2,3,4,5,6,7,8])).slice(0,16);
+  squares.forEach(s=>{if(s!==target)map[s]=symbols[Math.floor(Math.random()*symbols.length)]});
+
+  $('arenaArea').innerHTML=`<div style="width:100%;display:grid;gap:12px;justify-items:center">
+    <div class="status">ROUND ${round+1} / ${targets.length} &nbsp;•&nbsp; <strong id="scanInstruction">MEMORISE THE HIGHLIGHTED SQUARE</strong></div>
+    <div id="scanBoardWrap"></div>
+    <div class="status" id="scanPrompt">The highlight will disappear — then click the square you memorised.</div>
+  </div>`;
+  const board=makeBoard(map);board.id='scanBoard';$('scanBoardWrap').appendChild(board);
+
+  const targetEl=board.querySelector(`[data-sq="${target}"]`);
+  if(!targetEl){ round++; next(); return; }
+  targetEl.classList.add('hot');
+
+  // Use event delegation so every square is reliably clickable.
+  board.addEventListener('click',function handler(e){
+    const el=e.target.closest('.sq');
+    if(!el || locked || !gameActive)return;
+    locked=true;
+    board.querySelectorAll('.sq').forEach(x=>x.style.pointerEvents='none');
+    const selected=el.dataset.sq;
+    const ok=selected===target;
+    total+=ok?100:20;
+    targetEl.classList.add('correctAnswer');
+    if(!ok)el.classList.add('wrongAnswer');
+    $('scanInstruction').textContent=ok?'CORRECT — GREAT VISUAL RECALL':'WRONG — CORRECT SQUARE IS MARKED GREEN';
+    $('scanPrompt').textContent=`You selected ${selected.toUpperCase()} • Correct: ${target.toUpperCase()}`;
+    round++;
+    showFeedback(ok?'CORRECT':'WRONG ANSWER',target.toUpperCase(),'The target was '+target.toUpperCase()+'. The exercise trains rapid visual search and whole-board awareness.',next,ok,'You selected: '+selected.toUpperCase());
+  });
+
+  // Give the player a clear viewing phase before allowing the answer.
+  const t=setTimeout(()=>{
+    targetEl.classList.remove('hot');
+    $('scanInstruction').textContent='NOW FIND THE SQUARE YOU MEMORISED';
+    $('scanPrompt').textContent='Click the square you remember.';
+  },1400);
+  timers.push(t);
+ }
+ next();
+}
+
+/* 5. BLUNDER SHIELD — practical online decision control, 15-question pool */
+function blunder(){
+ const qs=pickUnique(blunderBank,'blunder',5);let i=0,total=0;
+ setBrief('CHESS DECISION LAB','Real-game situations with a visual board. Study the position, identify the strongest practical decision, then see why it works.<br><br><b style="color:#54f2a1">REAL-GAME BENEFIT:</b> Build decision quality, threat awareness and practical judgement.<br>Instead of simply saying “safe/blunder”, you choose between realistic chess decisions.');
+ function next(){
+  if(i===qs.length){finish(Math.round(total/5),'accuracy');return}
+  const x=qs[i];
+  $('arenaArea').innerHTML=`<div style="width:100%"><div class="status">SCENARIO ${i+1} / ${qs.length} • STUDY THE BOARD</div><div class="scenarioLayout"><div class="scenarioBoard" id="scenarioBoard"></div><div class="scenarioText"><div class="scenarioBadge">YOUR MOVE</div><div class="scenarioQuestion">${x.q}</div><div class="choices" id="choices"></div></div></div></div>`;
+  const board=makeBoard(x.board||{});$('scenarioBoard').appendChild(board);
+  const buttons=[];const opts=shuffle(x.opts.map((text,j)=>({text,correct:j===x.c})));
+  opts.forEach(o=>{const b=document.createElement('button');b.className='choice';b.textContent=o.text;buttons.push(b);b.onclick=()=>{if(!gameActive||buttons.some(z=>z.disabled))return;buttons.forEach(z=>z.disabled=true);const ok=o.correct;total+=ok?100:20;const correctBtn=buttons.find(z=>z.textContent===x.opts[x.c]);if(correctBtn)correctBtn.classList.add('correctAnswer');if(!ok)b.classList.add('wrongAnswer');i++;showFeedback(ok?'CORRECT':'WRONG ANSWER',x.opts[x.c],x.w,next,ok,'Your answer: '+o.text)};$('choices').appendChild(b)});
+ }
+ next();
+}
+
+async function shareChessIQ(){const text=`♟️ I'm training on ChessIQ. My ChessIQ is ${player.rating}. Think you can beat me?`;try{if(navigator.share)await navigator.share({title:'ChessIQ',text,url:location.href});else{await navigator.clipboard.writeText(text+'\\n'+location.href);toast('Challenge link copied')}}catch(e){}}
+async function challengeFriend(){const text=`♟️ I just trained on ChessIQ and scored ${$('resultScore').textContent}. My ChessIQ is ${player.rating}. Can you beat me?`;try{if(navigator.share)await navigator.share({title:'Beat my ChessIQ',text,url:location.href});else{await navigator.clipboard.writeText(text+'\\n'+location.href);toast('Result link copied')}}catch(e){}}
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
+renderProfile();renderCards();
+</script>
+</body>
+</html>
